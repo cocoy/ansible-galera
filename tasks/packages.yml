@@ -10,5 +10,5 @@
   with_items:
     - python-mysqldb
     - mariadb-galera-server
-    - galera
+    - galera-3
     - rsync
