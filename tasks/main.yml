@@ -1,14 +1,19 @@
 ---
 
-- include: repository.yml
-  tags: repository
+- include: deb.yml
+  when: ansible_os_family == "Debian"
 
-- include: packages.yml
-  tags: packages
+- include: rhel.yml
+  when: ansible_os_family == "RedHat"
 
 - include: access.yml
 - include: secure.yml
 - include: config.yml
+
+#- name: restart mysql for first run on master node
+#  service: name=mysql state=restarted args=--wsrep-new-cluster
+#  run_once: true
+#  delegate_to: "{{ galera_cluster_master }}"
 
 - meta: flush_handlers
 
