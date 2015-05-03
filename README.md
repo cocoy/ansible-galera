@@ -1,4 +1,4 @@
-galera
+ansible-galera
 ======
 
 This role configures Galera/MariaDB 5.5 cluster.
@@ -6,8 +6,8 @@ This role configures Galera/MariaDB 5.5 cluster.
 Requirements
 ------------
 
-## You must add `jinja2.ext.loopcontrols` to your `jinja2_extensions` in your `ansible.cfg`. 
-## For RHEL: You must have EPEL repository present
+** You must add `jinja2.ext.loopcontrols` to your `jinja2_extensions` in your `ansible.cfg`.  **
+** For RHEL: You must have EPEL repository present **
 
 All other requirements are listed in metadata file.
 
