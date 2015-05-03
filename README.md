@@ -60,7 +60,7 @@ Install galera cluster with default settings.
 - hosts: cluster_one
   vars:
     - galera_cluster_name: cluster_one
-    - galera_cluster_members: [10.0.0.1, 10.0.0.2]
+    - galera_cluster_members: [10.0.0.1, 10.0.0.2, 10.0.0.3]
   roles:
     - role: galera
 
