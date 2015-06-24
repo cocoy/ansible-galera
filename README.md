@@ -1,7 +1,7 @@
 ansible-galera
 ======
 
-This role configures Galera/MariaDB 10 cluster.
+This role configures Galera/MariaDB 5.5 cluster.
 
 Requirements
 ------------
