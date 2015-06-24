@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.define "galera1" do |galera1|
+    galera1.vm.box = "trusty64"
+    galera1.vm.network :private_network, ip: "192.168.33.211"
+    galera1.vm.network "forwarded_port", guest: 80, host: 8000, auto_correct: true
+    galera1.vm.network "forwarded_port", guest: 8000, host: 8001, auto_correct: true
+  end
+
+  config.vm.define "galera2" do |galera2|
+    galera2.vm.box = "trusty64"
+    galera2.vm.network :private_network, ip: "192.168.33.212"
+    galera2.vm.network "forwarded_port", guest: 80, host: 8800, auto_correct: true
+  end
+
+  config.vm.define "galera3" do |galera1|
+    galera1.vm.box = "trusty64"
+    galera1.vm.network :private_network, ip: "192.168.33.213"
+    galera1.vm.network "forwarded_port", guest: 8000, host: 8900, auto_correct: true
+  end
+
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "galera.yml"
+    ansible.sudo = true
+    ansible.verbose= "vvv"
+    ansible.host_key_checking = false 
+    ansible.extra_vars = { ansible_ssh_user: 'vagrant', 
+                 ansible_connection: 'paramiko',
+                 #ansible_ssh_args: '-o ForwardAgent=yes'}
+                 ansible_ssh_args: ''}
+  end
+end
+
